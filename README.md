@@ -1,10 +1,19 @@
-# Start your own "Can of Books" App
+# Can of Books
 
-This repository has starter code to begin work on creating your own online bookshelf.
+**Authors**: Rinat Galeev and Cullen Sharp
+**Version**: 1.0.0
 
-## What can books do?
+## Overview
 
 Books are life-changing. They have the power to enlighten, educate, entertain, heal, and help us grow. Build out this code base to create an web app to track what books have impacted you, and what's recommended to read next.
+
+## Getting Started
+
+Clone our repo, and install all the dependencies
+
+## Architecture
+
+React, Auth0, Git, Github, Node.js with Express, JS, Axios or Superagent
 
 ## Collaboration
 
