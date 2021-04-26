@@ -41,4 +41,4 @@ We'll use code reviews and appropriate communcation to ensure understanding accr
 
 ## Credit
 
-Rinat Galeev and Cullen Sharp
+## Time Estimates
