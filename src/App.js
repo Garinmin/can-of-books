@@ -1,6 +1,7 @@
 import React from 'react';
 import Header from './Header';
 import IsLoadingAndError from './IsLoadingAndError';
+import Login from './Login.js';
 import Footer from './Footer';
 import {
   BrowserRouter as Router,
@@ -17,6 +18,7 @@ class App extends React.Component {
         <Router>
           <IsLoadingAndError>
             <Header />
+            <Login />
             <Switch>
               <Route exact path="/">
                 {/* TODO: if the user is logged in, render the `MyFavoriteBooks` component, if they are not, render the `Login` component */}
@@ -32,3 +34,5 @@ class App extends React.Component {
 }
 
 export default App;
+
+
