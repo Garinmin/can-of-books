@@ -17,9 +17,7 @@ function Logout() {
           <Card.Text>
             Click Below to Log Out
           </Card.Text>
-            <Button onClick={() => {
-            logout({ returnTo: window.location.origin });
-            }}>Log out</Button>
+            <Button onClick={logout}>Log out</Button>
         </Card.Body>
       </Card>
   );
