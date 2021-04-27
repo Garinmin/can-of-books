@@ -7,10 +7,8 @@ import { useAuth0 } from '@auth0/auth0-react';
 
 function Login() {
    
-    const { 
-      isAuthenticated,
-      loginWithRedirect } = useAuth0();
-    return (
+    const { loginWithRedirect } = useAuth0();
+    return  (
       <Card style={{ width: '18rem' }}>
         <Card.Body>
           <Card.Title>Log In</Card.Title>
@@ -22,7 +20,7 @@ function Login() {
         </Card.Body>
       </Card>
     )
-
+ 
 }
 
 export default Login;
