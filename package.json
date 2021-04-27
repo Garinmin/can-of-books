@@ -40,18 +40,5 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
-  },
-  "description": "**Authors**: Rinat Galeev and Cullen Sharp **Version**: 1.0.0",
-  "main": "index.js",
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/Garinmin/can-of-books.git"
-  },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/Garinmin/can-of-books/issues"
-  },
-  "homepage": "https://github.com/Garinmin/can-of-books#readme"
+  }
 }
