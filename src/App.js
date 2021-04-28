@@ -51,7 +51,7 @@ class App extends React.Component {
              <Switch>
               <Route exact path="/">
               {this.props.auth0.isAuthenticated &&  <MyFavoriteBooks />}
-              {this.props.auth0.isAuthenticated &&  <BestBooks getBooks = {this.getBooks} books = {this.state.books} />}
+              {this.props.auth0.isAuthenticated && <BestBooks getBooks = {this.getBooks} books = {this.state.books} />}
               </Route>
               <Route exact path="/profile">
                 {this.props.auth0.isAuthenticated && <Profile/>}
