@@ -26,7 +26,7 @@ class App extends React.Component {
 
   getBooks = async (e) => {
     try {
-      const booksUrl = `http://localhost:3000/books/?email=phony@email.com`;
+      const booksUrl = `http://localhost:3001/books/?email=phony@email.com`;
       const response = await axios.get(booksUrl);
 
       this.setState({
@@ -51,7 +51,7 @@ class App extends React.Component {
              <Switch>
               <Route exact path="/">
               {this.props.auth0.isAuthenticated &&  <MyFavoriteBooks />}
-              {this.props.auth0.isAuthenticated &&  <BestBooks getBooks = {this.getBooks} books = {this.state.books} />}
+              {this.props.auth0.isAuthenticated && <BestBooks getBooks = {this.getBooks} books = {this.state.books} />}
               </Route>
               <Route exact path="/profile">
                 {this.props.auth0.isAuthenticated && <Profile/>}
