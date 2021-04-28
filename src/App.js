@@ -5,15 +5,43 @@ import IsLoadingAndError from './IsLoadingAndError';
 import Login from './Login.js';
 import Logout from './Logout.js';
 import Footer from './Footer';
-import Profile from './Profile'
+import Profile from './Profile';
+import BestBooks from './BestBooks.js';
 import MyFavoriteBooks from './MyFavoriteBooks';
 import {
   BrowserRouter as Router,
   Switch,
   Route
 } from "react-router-dom";
+import axios from 'axios';
 
 class App extends React.Component {
+
+  constructor(props) {
+    super(props);
+    this.state = {
+      books: [],
+      error: {},
+      isError: false
+    };
+  }
+
+  getBooks = async (e) => {
+    try {
+      const booksUrl = `http://localhost:3000/books/?email=phony@email.com`;
+      const response = await axios.get(booksUrl);
+
+      this.setState({
+        books: response.data,
+        isError: false
+      });
+    } catch (error) {
+      this.setState({
+        error, 
+        isError: true
+      });
+    }
+  }
 
   render() {
     console.log('app', this.props);
@@ -27,6 +55,7 @@ class App extends React.Component {
                 {/* TODO: if the user is logged in, render the `MyFavoriteBooks` component, if they are not, render the `Login` component */}
               {this.props.auth0.isAuthenticated ?  <Logout /> : <Login /> }
               {this.props.auth0.isAuthenticated &&  <MyFavoriteBooks />}
+              {this.props.auth0.isAuthenticated &&  <BestBooks getBooks = {this.getBooks} books = {this.state.books} />}
               </Route>
               <Route exact path="/profile">
                 {this.props.auth0.isAuthenticated && <Profile/>}
@@ -41,5 +70,3 @@ class App extends React.Component {
 }
 
 export default withAuth0(App);
-
-
