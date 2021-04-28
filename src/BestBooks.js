@@ -3,37 +3,40 @@ import Carousel from 'react-bootstrap/Carousel';
 import {CustomPlaceholder} from 'react-placeholder-image';
 
 class BestBooks extends React.Component {
-    
-    componentDidMount() {
-        this.props.getBooks();
-    }
-    render() {
-        return (
-            <Carousel>
-                {this.props.books.map((book, idx) => {
-                    return (
-                    <Carousel.Item>
-                          <CustomPlaceholder
-                            className="d-block w-100"
-                            width={1000}
-                            height={300}
-                            backgroundColor="#007bff"
-                            textColor="#ffffff"
-                            alt={book.name}
-                            text=' '
-                          />
-                      <Carousel.Caption>
-                        <h3>{book.name}</h3>
-                        <p>{book.condition}</p>
-                      </Carousel.Caption>
-                    </Carousel.Item>
-                    )
-                    }
-                )}
-            </Carousel>
-            
-        )
-    }
+  componentDidMount() {
+      this.props.getBooks();
+  }
+  render() {
+    return (
+      <>    
+        {this.props.books.length !== 0 &&
+          <Carousel>
+          {this.props.books.map((book, idx) => {
+            return (
+              <Carousel.Item key={idx}>
+                  <CustomPlaceholder
+                    className="d-block w-100"
+                    width={1000}
+                    height={300}
+                    backgroundColor="#007bff"
+                    textColor="#ffffff"
+                    alt={book.name}
+                    text=' '
+                  />
+              <Carousel.Caption>
+                <h3>{book.name}</h3>
+                <p>{book.status}</p>
+              </Carousel.Caption>
+            </Carousel.Item>
+            )
+          }
+          )
+          }
+        </Carousel>
+        }
+      </>
+    )
+  }
 }
 
 export default BestBooks;
