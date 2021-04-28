@@ -9,7 +9,7 @@ class BestBooks extends React.Component {
   render() {
     return (
       <>    
-        {this.props.books.length !== 0 &&
+        {this.props.books.length &&
           <Carousel>
           {this.props.books.map((book, idx) => {
             return (
