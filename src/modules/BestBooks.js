@@ -1,5 +1,6 @@
 import React from 'react';
 import Carousel from 'react-bootstrap/Carousel';
+import Button from 'react-bootstrap/Button';
 import {CustomPlaceholder} from 'react-placeholder-image';
 
 class BestBooks extends React.Component {
@@ -26,6 +27,9 @@ class BestBooks extends React.Component {
               <Carousel.Caption>
                 <h3>{book.name}</h3>
                 <p>{book.status}</p>
+                <Button 
+                variant='dark'
+                className='mb-2'>remove this book</Button>
               </Carousel.Caption>
             </Carousel.Item>
             )
