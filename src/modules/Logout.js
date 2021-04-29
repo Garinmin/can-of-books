@@ -10,6 +10,7 @@ function Logout() {
     logout({
       returnTo: process.env.REACT_APP_REDIRECT_URI
     });
-  }}>Log out</Button>;
+  }}
+  className='float-left'>Log out</Button>;
 }
 export default Logout;
