@@ -30,7 +30,7 @@ class MyFavoriteBooks extends React.Component {
               onChange={this.props.getStatus}
               ></Form.Control>
             </Form.Group>
-            <Button>Submit</Button>
+            <Button onClick={this.props.createBook}>Submit</Button>
           </Form>
         </Card>
       </Jumbotron>
