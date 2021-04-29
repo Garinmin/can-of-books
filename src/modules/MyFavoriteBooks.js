@@ -16,11 +16,19 @@ class MyFavoriteBooks extends React.Component {
           <Form className="p-3">
             <Form.Group className="mb-3">
               <Form.Label>Enter a book's title</Form.Label>
-              <Form.Control type="text" placeholder="Title"></Form.Control>
+              <Form.Control 
+              type="text" 
+              placeholder="Title"
+              onChange={this.props.getTitle}
+              ></Form.Control>
             </Form.Group>
             <Form.Group>
               <Form.Label>What condition is it in?</Form.Label>
-              <Form.Control type="text" placeholder="Condition"></Form.Control>
+              <Form.Control 
+              type="text"
+              placeholder="Condition"
+              onChange={this.props.getStatus}
+              ></Form.Control>
             </Form.Group>
             <Button>Submit</Button>
           </Form>
