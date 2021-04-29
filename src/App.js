@@ -20,6 +20,7 @@ class App extends React.Component {
     super(props);
     this.state = {
       books: [],
+      showBookModal: false,
       title: '',
       status: '',
       error: {},
@@ -52,12 +53,22 @@ class App extends React.Component {
     this.setState({status: e.target.value})
   }
 
-  // createBook = (e) => {
-  //   e.preventDefault();
+  createBook = async (e) => {
+    try{
+      e.preventDefault();
 
-  //   const API = 'http://localhost:3001';
-  //   const books = await axios.post(`${API}/books`, {})
-  // }
+      const API = 'http://localhost:3001';
+      const newBook = await axios.post(`${API}/books`, {email: "phony@email.com", books:[{
+        name: this.state.title,
+        status: this.state.status
+      }]});
+
+      const newBookArray = newBook.data;
+      this.setState({books: newBookArray});
+    } catch (error) {
+      console.error(error);
+    }
+  }
   render() {
     console.log('app', this.props);
     return(
@@ -71,7 +82,8 @@ class App extends React.Component {
                 <Container fluid>
                   <MyFavoriteBooks 
                   getTitle={this.getTitle}
-                  getStatus={this.getStatus} 
+                  getStatus={this.getStatus}
+                  createBook={this.createBook} 
                   />
                 </Container>
               }
