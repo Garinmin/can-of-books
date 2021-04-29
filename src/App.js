@@ -11,7 +11,7 @@ import {
   Switch,
   Route
 } from "react-router-dom";
-import {Container, Card, Form, Button} from 'react-bootstrap';
+import {Container} from 'react-bootstrap';
 import axios from 'axios';
 
 class App extends React.Component {
@@ -20,6 +20,8 @@ class App extends React.Component {
     super(props);
     this.state = {
       books: [],
+      title: '',
+      status: '',
       error: {},
       isError: false
     };
@@ -43,8 +45,19 @@ class App extends React.Component {
   }
 
   getTitle = (e) => {
-    this.setState({})
+    this.setState({title: e.target.value})
   }
+
+  getStatus = (e) => {
+    this.setState({status: e.target.value})
+  }
+
+  // createBook = (e) => {
+  //   e.preventDefault();
+
+  //   const API = 'http://localhost:3001';
+  //   const books = await axios.post(`${API}/books`, {})
+  // }
   render() {
     console.log('app', this.props);
     return(
@@ -56,7 +69,10 @@ class App extends React.Component {
               <Route exact path="/">
               {this.props.auth0.isAuthenticated && 
                 <Container fluid>
-                  <MyFavoriteBooks />
+                  <MyFavoriteBooks 
+                  getTitle={this.getTitle}
+                  getStatus={this.getStatus} 
+                  />
                 </Container>
               }
               {this.props.auth0.isAuthenticated && <BestBooks getBooks = {this.getBooks} books = {this.state.books} />}
