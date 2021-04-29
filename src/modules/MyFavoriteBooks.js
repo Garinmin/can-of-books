@@ -9,30 +9,10 @@ import "../MyFavoriteBooks.css";
 class MyFavoriteBooks extends React.Component {
   render() {
     return (
-      <Jumbotron inline>
+      <Jumbotron>
         <h1>My Favorite Books</h1>
         <p>This is a collection of my favorite books</p>
-        <Card className="m-0" style={{ width: "18rem" }}>
-          <Form className="p-3">
-            <Form.Group className="mb-3">
-              <Form.Label>Enter a book's title</Form.Label>
-              <Form.Control 
-              type="text" 
-              placeholder="Title"
-              onChange={this.props.getTitle}
-              ></Form.Control>
-            </Form.Group>
-            <Form.Group>
-              <Form.Label>What condition is it in?</Form.Label>
-              <Form.Control 
-              type="text"
-              placeholder="Condition"
-              onChange={this.props.getStatus}
-              ></Form.Control>
-            </Form.Group>
-            <Button onClick={this.props.createBook}>Submit</Button>
-          </Form>
-        </Card>
+        <Button onClick={this.props.showModal}>Add Books</Button>
       </Jumbotron>
     );
   }
