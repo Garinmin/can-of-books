@@ -6,6 +6,7 @@ import Footer from './modules/Footer';
 import Profile from './modules/Profile';
 import BestBooks from './modules/BestBooks.js';
 import MyFavoriteBooks from './modules/MyFavoriteBooks';
+import BookModal from './modules/BookModal';
 import {
   BrowserRouter as Router,
   Switch,
@@ -20,7 +21,7 @@ class App extends React.Component {
     super(props);
     this.state = {
       books: [],
-      showBookModal: false,
+      showModal: false,
       title: '',
       status: '',
       error: {},
@@ -80,13 +81,18 @@ class App extends React.Component {
               <Route exact path="/">
               {this.props.auth0.isAuthenticated && 
                 <Container fluid>
-                  <MyFavoriteBooks 
-                  getTitle={this.getTitle}
-                  getStatus={this.getStatus}
-                  createBook={this.createBook} 
+                  <MyFavoriteBooks
+                  showModal={(e) => {this.setState({showModal: true})}}
                   />
                 </Container>
               }
+              <BookModal 
+              showModal={this.state.showModal}
+              hideModal={(e) => {this.setState({showModal: false})}}
+              getTitle={this.getTitle}
+              getStatus={this.getStatus}
+              createBook={this.createBook}
+              />
               {this.props.auth0.isAuthenticated && <BestBooks getBooks = {this.getBooks} books = {this.state.books} />}
               </Route>
               <Route exact path="/profile">
