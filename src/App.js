@@ -1,16 +1,17 @@
 import React from 'react';
 import { withAuth0 } from '@auth0/auth0-react';
-import Header from './Header';
-import IsLoadingAndError from './IsLoadingAndError';
-import Footer from './Footer';
-import Profile from './Profile';
-import BestBooks from './BestBooks.js';
-import MyFavoriteBooks from './MyFavoriteBooks';
+import Header from './modules/Header';
+import IsLoadingAndError from './modules/IsLoadingAndError';
+import Footer from './modules/Footer';
+import Profile from './modules/Profile';
+import BestBooks from './modules/BestBooks.js';
+import MyFavoriteBooks from './modules/MyFavoriteBooks';
 import {
   BrowserRouter as Router,
   Switch,
   Route
 } from "react-router-dom";
+import {Container, Card, Form, Button} from 'react-bootstrap';
 import axios from 'axios';
 
 class App extends React.Component {
@@ -41,6 +42,9 @@ class App extends React.Component {
     }
   }
 
+  getTitle = (e) => {
+    this.setState({})
+  }
   render() {
     console.log('app', this.props);
     return(
@@ -50,7 +54,11 @@ class App extends React.Component {
             <Header />
              <Switch>
               <Route exact path="/">
-              {this.props.auth0.isAuthenticated &&  <MyFavoriteBooks />}
+              {this.props.auth0.isAuthenticated && 
+                <Container fluid>
+                  <MyFavoriteBooks />
+                </Container>
+              }
               {this.props.auth0.isAuthenticated && <BestBooks getBooks = {this.getBooks} books = {this.state.books} />}
               </Route>
               <Route exact path="/profile">
