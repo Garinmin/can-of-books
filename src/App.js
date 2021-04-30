@@ -20,12 +20,13 @@ class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
+      index: 0,
       email: '',
       books: [],
       showModal: false,
       title: '',
       status: '',
-      bookIndex: 0,
+      updatingBooks: false,
       error: {},
       isError: false
     };
@@ -73,8 +74,35 @@ class App extends React.Component {
     }
   }
 
-  deleteBook = (e) => {
-    this.setState({bookIndex:Number(e.target.value)})
+  deleteBook = async (e) => {
+    try{
+      const index = e.target.value;
+      const API = 'http://localhost:3001';
+      const filteredBooks = await axios.delete(`${API}/books/${index}?email=phony@email.com`);
+
+      this.setState({books: filteredBooks });
+    } catch (error) {
+      console.error(error);
+    }
+  }
+
+  updateBook = async (e) => {
+    try {
+      const index = this.state.index;
+      console.log({index});
+      const API = 'http://localhost:3001';
+      const updatedBooks = await axios.put(`${API}/books/${index}`, {
+        email: "phony@email.com",
+        books: [{
+          name: this.state.title,
+          status: this.state.status
+        }
+        ]
+      })
+      this.setState({books: updatedBooks});
+    } catch (error) {
+      console.error(error);
+    }
   }
 
   getEmail = (e) => {
@@ -99,17 +127,26 @@ class App extends React.Component {
               }
               <BookModal 
               showModal={this.state.showModal}
-              hideModal={(e) => {this.setState({showModal: false})}}
+              hideModal={(e) => {this.setState({
+                showModal: false,
+                updatingBooks: false
+              })}}
               getTitle={this.getTitle}
               getStatus={this.getStatus}
               createBook={this.createBook}
               getEmail={this.getEmail}
+              updateBook={this.updateBook}
+              updatingBooks={this.state.updatingBooks}
               />
               {this.props.auth0.isAuthenticated && <BestBooks
               getBooks = {this.getBooks}
               books = {this.state.books}
               deleteBook = {this.deleteBook}
-              
+              showModal={(e) => {this.setState({
+                showModal: true,
+                updatingBooks: true,
+                index: e.target.value,
+              })}}
               />}
               </Route>
               <Route exact path="/profile">
