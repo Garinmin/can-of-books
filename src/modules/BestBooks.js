@@ -8,6 +8,7 @@ class BestBooks extends React.Component {
       this.props.getBooks();
   }
   render() {
+    console.log(this.props.books);
     return (
       <>    
         {this.props.books.length &&
@@ -33,6 +34,13 @@ class BestBooks extends React.Component {
                 value={idx}
                 onClick={this.props.deleteBook}
                 >remove this book</Button>
+
+                <Button 
+                variant='dark'
+                className='mb-2 ml-2'
+                value={idx}
+                onClick={this.props.showModal}
+                >update this book</Button>
               </Carousel.Caption>
             </Carousel.Item>
             )

@@ -34,9 +34,15 @@ export default class BookModal extends React.Component {
               onChange={this.props.getStatus}
             ></Form.Control>
           </Form.Group>
+          {this.props.updatingBooks ? 
+          <Button className='mr-2' onClick={this.props.updateBook}>
+            Update it
+          </Button>
+          :
           <Button className='mr-2' onClick={this.props.createBook}>
             Add it
           </Button>
+          }
           <Button onClick={this.props.hideModal}>I'm done</Button>
         </Form>
       </Modal>
