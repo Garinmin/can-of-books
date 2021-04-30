@@ -67,8 +67,7 @@ class App extends React.Component {
         status: this.state.status
       }]});
 
-      const newBookArray = newBook.data;
-      this.setState({books: newBookArray});
+      this.setState({books: newBook.data});
     } catch (error) {
       console.error(error);
     }
@@ -80,7 +79,7 @@ class App extends React.Component {
       const API = 'http://localhost:3001';
       const filteredBooks = await axios.delete(`${API}/books/${index}?email=phony@email.com`);
 
-      this.setState({books: filteredBooks });
+      this.setState({books: filteredBooks.data });
     } catch (error) {
       console.error(error);
     }
@@ -99,7 +98,7 @@ class App extends React.Component {
         }
         ]
       })
-      this.setState({books: updatedBooks});
+      this.setState({books: updatedBooks.data});
     } catch (error) {
       console.error(error);
     }
