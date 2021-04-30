@@ -11,7 +11,16 @@ export default class BookModal extends React.Component {
           <h4>Add a book to the collection</h4>
         </Modal.Header>
         <Form className='p-3'>
+          <Form.Group controlId="exampleForm.ControlInput1">
+            <Form.Label>Enter your email</Form.Label>
+            <Form.Control 
+            type="email" 
+            placeholder="name@example.com"
+            onChange={this.props.getEmail}
+            ></Form.Control>
+          </Form.Group>
           <Form.Group className='mb-3'>
+          <Form.Label>Enter some information about the book</Form.Label>
             <Form.Control
               type='text'
               placeholder="What's the title?"

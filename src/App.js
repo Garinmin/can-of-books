@@ -20,10 +20,12 @@ class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
+      email: '',
       books: [],
       showModal: false,
       title: '',
       status: '',
+      bookIndex: 0,
       error: {},
       isError: false
     };
@@ -70,6 +72,15 @@ class App extends React.Component {
       console.error(error);
     }
   }
+
+  deleteBook = (e) => {
+    this.setState({bookIndex:Number(e.target.value)})
+  }
+
+  getEmail = (e) => {
+    this.setState({email: e.target.value});
+  }
+
   render() {
     console.log('app', this.props);
     return(
@@ -92,8 +103,14 @@ class App extends React.Component {
               getTitle={this.getTitle}
               getStatus={this.getStatus}
               createBook={this.createBook}
+              getEmail={this.getEmail}
               />
-              {this.props.auth0.isAuthenticated && <BestBooks getBooks = {this.getBooks} books = {this.state.books} />}
+              {this.props.auth0.isAuthenticated && <BestBooks
+              getBooks = {this.getBooks}
+              books = {this.state.books}
+              deleteBook = {this.deleteBook}
+              
+              />}
               </Route>
               <Route exact path="/profile">
                 {this.props.auth0.isAuthenticated && <Profile/>}

@@ -29,7 +29,10 @@ class BestBooks extends React.Component {
                 <p>{book.status}</p>
                 <Button 
                 variant='dark'
-                className='mb-2'>remove this book</Button>
+                className='mb-2'
+                value={idx}
+                onClick={this.props.deleteBook}
+                >remove this book</Button>
               </Carousel.Caption>
             </Carousel.Item>
             )
