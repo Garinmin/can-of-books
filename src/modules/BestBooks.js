@@ -8,7 +8,6 @@ class BestBooks extends React.Component {
       this.props.getBooks();
   }
   render() {
-    console.log(this.props.books);
     return (
       <>    
         {this.props.books.length &&
